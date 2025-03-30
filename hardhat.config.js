@@ -20,7 +20,12 @@ module.exports = {
     localhost: {
       url: "http://127.0.0.1:8545/",
       chainId: 31337,
-    }
+    },
+    ganache: {
+      url: "HTTP://127.0.0.1:7545",
+      chainId: 31337,
+      accounts: [`0xa5b1bd4b3e046bf6e913d17df32b154f3d635f02e826f7f8d8865a2a2f599ae8`],
+    },
   },
   gasReporter: {
     enabled: true,
