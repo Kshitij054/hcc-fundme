@@ -41,6 +41,14 @@ contract FundMe {
         fund();
     }
 
+    function sendFunds(
+        address payable _receiver,
+        uint256 _amount
+    ) public onlyOwner {
+        require(address(this).balance >= _amount, "Not enough balance");
+        _receiver.transfer(_amount);
+    }
+
     function getFunder(uint256 index) public view returns (address) {
         return s_funders[index];
     }
