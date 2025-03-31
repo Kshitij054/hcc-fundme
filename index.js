@@ -77,8 +77,9 @@ async function withdraw() {
 function listenForTransaction(transactionResponse, provider) {
     console.log(`mining ${transactionResponse.hash}...`)
     return new Promise((resolve, reject) => {
-        provider.once(transactionResponse.hash, (transactionReceipt) => {
-            console.log(`Completed with ${transactionReceipt.confirmations} confirmations`);
+        provider.once(transactionResponse.hash, async (txReceipt) => {
+            await provider.waitForTransaction(transactionResponse.hash);
+            console.log(`Completed with ${txReceipt.confirmations} confirmations`);
             resolve();
         })
     })

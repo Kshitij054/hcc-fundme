@@ -1,13 +1,13 @@
 const { network } = require("hardhat")
-const { networkConfig, developmentChain } = require("../helper-hardhat-config.js")
+const { networkConfig, developmentChains } = require("../helper-hardhat-config.js") // Fixed typo
 
-module.exports = async ({ getNamedAccounts, deployments }) => {
+module.exports = async ({ getNamedAccounts, deployments, network }) => {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
-    const chianId = network.config.chainId
+    const chainId = network.config.chainId
 
     let ethUsdPriceFeedAddress;
-    if (developmentChain.includes(network.name)) {
+    if (developmentChains.includes(network.name)) {
         const ethUsdAggregator = await deployments.get("MockV3Aggregator")
         ethUsdPriceFeedAddress = ethUsdAggregator.address
     }
