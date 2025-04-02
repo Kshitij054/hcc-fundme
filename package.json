@@ -28,6 +28,8 @@
     "test": "yarn hardhat test",
     "lint": "yarn solhint 'contracts/*.sol'",
     "lint:fix": "yarn solhint 'contracts/*.sol --fix'"
+
+
   },
   "dependencies": {
     "dotenv": "^16.4.7"
